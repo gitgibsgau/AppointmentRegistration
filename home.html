@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script type="text/javascript" src="js/jquery.timepicker.js"></script>
+<script src="js/validateForm.js"></script>
+<script src="js/effects.js"></script>
+
+<title>Appointment Registration Form</title
+</head>
+<body>
+<div class="container">
+<br>
+<br>
+<p>
+<h1> Appointment Registration System </h1> 
+<button type="button" id="new" class="btn btn-primary">NEW</button>
+<button type="button" id="cancel" class="btn btn-primary">CANCEL</button>
+</p>
+<div id="add-form">
+    <h3> Add new appointment </h3>
+	<!– Add new appointment to the database(initially hidden)  –> 
+    <form method="post" id="addForm" name="addForm" action="/perl/cgi/AddAppointment.cgi" onsubmit="return validateForm()">
+    <table class="table table-striped">
+	    <tr>
+            <td >Date</td>
+            <td><input name="Date" type="text" id ="datepicker" /></td>
+			<td> <span id="dateErrorMessage" style=""> </span></td> 
+        </tr>
+
+        <tr>
+            <td >Time</td>
+            <td><input name="Time" type="text" id="datepick" class="time"  /></td>
+			<td> <span id="timeErrorMessage"> </span></td> 
+        </tr>
+
+        <tr>
+            <td >Description</td>
+            <td>
+			<textarea name="Description" rows="4" cols="50" >
+			</textarea>
+			</td>
+			<td> <span id="descriptionErrorMessage"> </span></td> 
+        </tr>
+	</table>
+    </form>
+	<br /> 
+	
+</div>
+<!– Search the appointment lists based on information provided the textbox –> 
+<div id="search-form" >	
+		<form action="post" onsubmit="return getAppointments()"> 
+		<input name="searchinfo" type="text" id ="searchvalueType" style="width: 300px;"/>	
+		<input type="submit" name="submit" id="searchbttn" value="SEARCH" />
+		</form>
+</div>
+<!– DOM area where data is populated dynamic without refreshing the page –> 
+<div id="search-result">
+  
+</table>
+</div>
+	
+</div>
+<p>
+<center> Developed by <a href="https://www.linkedin.com/in/gauravkshinde" target="_blank"> Gaurav Shinde </a> <center> 
+</p>
+
+</body>
+</html>
